@@ -13,20 +13,22 @@ namespace QuizNet.Controllers
     {
         public static List<Student> students = new List<Student>()
         {
-            new Student
-             {
+            new Student()
+            {
                 Id = 1,
                 Index = 12345,
                 FirstName = "Karol",
                 LastName = "Kozicki"
+
             },
-            new Student
+            new Student()
              {
                 Id = 2,
                 Index = 6789,
                 FirstName = "Karol2",
                 LastName = "Kozicki2"
-            }
+            
+            },
         };
     
         private readonly ILogger<HomeController> _logger;
@@ -42,7 +44,7 @@ namespace QuizNet.Controllers
             return View(student);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Privacy(int p)
         {
             return View();
         }
