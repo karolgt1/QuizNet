@@ -16,7 +16,7 @@ namespace QuizNet.Controllers
             new Student()
             {
                 Id = 1,
-                Index = 12345,
+                Index = 168952,
                 FirstName = "Karol",
                 LastName = "Kozicki"
 
@@ -25,8 +25,8 @@ namespace QuizNet.Controllers
              {
                 Id = 2,
                 Index = 6789,
-                FirstName = "Karol2",
-                LastName = "Kozicki2"
+                FirstName = "Jan",
+                LastName = "Kowalski"
             
             },
         };
