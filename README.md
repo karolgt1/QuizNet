@@ -1,2 +1,2 @@
 # QuizNet
-First .Net application
+My first .Net application
