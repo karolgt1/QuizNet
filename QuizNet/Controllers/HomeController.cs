@@ -44,7 +44,7 @@ namespace QuizNet.Controllers
             return View(student);
         }
 
-        public IActionResult Privacy(int p)
+        public IActionResult Privacy()
         {
             return View();
         }
