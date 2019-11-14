@@ -26,9 +26,9 @@ namespace QuizNet.Controllers
                     },
                     new Answer()
                     {
-                    Id =2,
-                    QuestionId = 1,
-                    Text = "admin"
+                        Id =2,
+                        QuestionId = 1,
+                        Text = "admin"
                     },
                     new Answer()
                     {
@@ -38,45 +38,45 @@ namespace QuizNet.Controllers
                     },
                     new Answer()
                     {
-                    Id =4,
-                    QuestionId = 1,
-                    Text = "123"
+                        Id =4,
+                        QuestionId = 1,
+                        Text = "123"
                     }
                 }
             },
             new Question()
             {
-            Id = 1,
-            Text = "Jaki jest najlepszy język programowania?",
-            CorrectAnswerIndex = 2,
-            Answers = new Answer[]
-            {
-                new Answer()
+                Id = 2,
+                Text = "Jaki jest najlepszy język programowania?",
+                CorrectAnswerIndex = 2,
+                Answers = new Answer[]
                 {
-                    Id =5,
-                    QuestionId = 2,
-                    Text = "HTML"
-                },
-                new Answer()
-                {
-                    Id =6,
-                    QuestionId = 2,
-                    Text = "Java"
-                },
-                new Answer()
-                {
-                    Id =7,
-                    QuestionId = 2,
-                    Text = "c#"
-                },
-                new Answer()
-                {
-                    Id =8,
-                    QuestionId = 2,
-                    Text = "JavaScript"
+                    new Answer()
+                    {
+                        Id =5,
+                        QuestionId = 2,
+                        Text = "HTML"
+                    },
+                    new Answer()
+                    {
+                        Id =6,
+                        QuestionId = 2,
+                        Text = "Java"
+                    },
+                    new Answer()
+                    {
+                        Id =7,
+                        QuestionId = 2,
+                        Text = "C#"
+                    },
+                    new Answer()
+                    {
+                        Id =8,
+                        QuestionId = 2,
+                        Text = "JavaScript"
+                    }
                 }
             }
-        }
         };
 
         public IActionResult GetAll()
