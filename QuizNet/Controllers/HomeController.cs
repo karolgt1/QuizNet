@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuizNet.DataAccess.Models;
@@ -12,26 +10,7 @@ namespace QuizNet.Controllers
 {
     public class HomeController : Controller
     {
-        public static List<Student> students = new List<Student>()
-        {
-            new Student()
-            {
-                Id = 1,
-                Index = 168952,
-                FirstName = "Karol",
-                LastName = "Kozicki"
 
-            },
-            new Student()
-             {
-                Id = 2,
-                Index = 6789,
-                FirstName = "Jan",
-                LastName = "Kowalski"
-            
-            },
-        };
-    
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -39,13 +18,7 @@ namespace QuizNet.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(int id=1)
-        {
-            var student = students.FirstOrDefault(s => s.Id == id);
-            return View(student);
-        }
-
-        public IActionResult Privacy()
+        public IActionResult Index()
         {
             return View();
         }
