@@ -11,6 +11,8 @@ using QuizNet.Controllers;
 using QuizNet.BusinessLogic;
 using QuizNet.BusinessLogic.Interfaces;
 using QuizNet.DataAccess;
+using QuizNet.BusinessLogic.Mapper;
+using AutoMapper;
 
 namespace QuizNet
 {
@@ -26,8 +28,10 @@ namespace QuizNet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) //do konfiguracji serwisów
         {
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped<IQuestionsRepository, InMemoryQuestionRepository>();
             services.AddScoped<IQuizService, QuizService>();
+            services.AddScoped<IQuestionService, QuestionService>();
             services.AddControllersWithViews();
         }
 
