@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using QuizNet.BusinessLogic.DTOs;
 using QuizNet.BusinessLogic.Interfaces;
@@ -49,7 +50,7 @@ namespace QuizNet.Controllers
                 Question = questionToEdit
             };
 
-            return View("QuestionForm", questionToEdit);
+            return View("QuestionForm", questionViewModel);
         }
 
         [HttpPost]
@@ -69,7 +70,21 @@ namespace QuizNet.Controllers
         public IActionResult GenerateQuiz()
         {
             List<QuestionDto> quiz = _quizService.GenerateQuiz();
-            return View("Quiz", quiz);
+            var quizViewModel = new QuizViewModel(quiz);
+            return View("Quiz", quizViewModel);
+        }
+        [HttpPost]
+        public IActionResult CheckQuiz(QuizViewModel quizViewModel)
+        {
+            
+            var correctAnswers = _quizService.CheckQuiz(quizViewModel.Questions, quizViewModel.UserAnswerIndex);
+            var summaryViewModel = new QuizSummaryViewModel()
+            {
+                Questions = quizViewModel.Questions,
+                UserAnswersIndex = quizViewModel.UserAnswerIndex,
+                CorrectAnswers = correctAnswers
+            };
+            return View("QuizSummary", summaryViewModel);
         }
     }
 
