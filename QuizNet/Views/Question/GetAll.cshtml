@@ -8,9 +8,22 @@
 <a class="btn btn-primary"
    asp-controller="Question"
    asp-action="Create">Add new question!</a>
-<a class="btn btn-primary"
-   asp-controller="Question"
-   asp-action="GenerateQuiz">Generate Quiz!</a>
+<div class="btn-group dropright">
+    <button type="button" class="btn btn-primary">
+        Generate Quiz
+    </button>
+    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropright</span>
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item"
+           asp-controller="Question"
+           asp-action="GenerateRecentlyAddedQuestionsQuiz">Last added questions</a>
+        <a class="dropdown-item"
+           asp-controller="Question"
+           asp-action="GenerateQuiz">Random questions</a>
+    </div>
+</div>
 
 <hr />
 @foreach (var question in Model)
@@ -40,6 +53,8 @@
             </div>
 
         </div>
+        <i>Created at @question.Time</i>
+        <br />
         <br />
         <ul class="list-group">
 
