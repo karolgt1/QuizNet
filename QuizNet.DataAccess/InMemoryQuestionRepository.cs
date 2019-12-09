@@ -15,6 +15,7 @@ namespace QuizNet.DataAccess
                 Id = 1,
                 Text = "Jakie jest hasło admia?",
                 CorrectAnswerIndex = 1,
+                Time = new DateTime(2019,11,20,15,36,46),
                 Answers = new Answer[]
                 {
                     new Answer()
@@ -48,6 +49,7 @@ namespace QuizNet.DataAccess
                 Id = 2,
                 Text = "Jaki jest najlepszy język programowania?",
                 CorrectAnswerIndex = 2,
+                Time = new DateTime(2019,11,24,17,39,53),
                 Answers = new Answer[]
                 {
                     new Answer()
@@ -81,6 +83,7 @@ namespace QuizNet.DataAccess
                 Id = 3,
                 Text = "Jakiej metody HTTP używamy aby pobrać dane z serwera?",
                 CorrectAnswerIndex = 3,
+                Time = new DateTime(2019,11,27,13,12,26),
                 Answers = new Answer[]
                 {
                     new Answer()
@@ -113,6 +116,7 @@ namespace QuizNet.DataAccess
             {
                 Id = 4,
                 Text = "Na jakim systemie operacyjnym możemy uruchomić aplikację napisaną w .NET Core?",
+                Time = new DateTime(2019,10,12,18,31,16),
                 CorrectAnswerIndex = 3,
                 Answers = new Answer[]
                 {
@@ -146,6 +150,7 @@ namespace QuizNet.DataAccess
             {
                 Id = 5,
                 Text = "Które zdanie najlepiej opisuje kontroler?",
+                Time = new DateTime(2019,11,12,11,16,46),
                 CorrectAnswerIndex = 2,
                 Answers = new Answer[]
                 {
@@ -205,6 +210,7 @@ namespace QuizNet.DataAccess
             var question = _questions.FirstOrDefault(x => x.Id == updatedQuestion.Id);
             question.Text = updatedQuestion.Text;
             question.CorrectAnswerIndex = updatedQuestion.CorrectAnswerIndex;
+            question.Time = updatedQuestion.Time;
             for (int i = 0; i < updatedQuestion.Answers.Length; i++)
             {
                 question.Answers[i].Text = updatedQuestion.Answers[i].Text;

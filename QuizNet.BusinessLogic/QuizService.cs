@@ -29,6 +29,15 @@ namespace QuizNet.BusinessLogic
             return randomQuestionsDto;
         }
 
+        public List<QuestionDto> GenerateRecentlyAddedQuestionsQuiz()
+        {
+            List<Question> questions = _questionRepository.GetAll().ToList();
+            questions.Sort((x,y) => DateTime.Compare(y.Time,x.Time));
+            List<Question> recentlyQuestions = questions.Take(3).ToList();
+            List<QuestionDto> recentlyQuestionsDtos = _mapper.Map<List<QuestionDto>>(recentlyQuestions);
+            return recentlyQuestionsDtos;
+        }
+
         public int CheckQuiz(List<QuestionDto> questions, int[] userAnswers)
         {
             int correctAnswers = 0;

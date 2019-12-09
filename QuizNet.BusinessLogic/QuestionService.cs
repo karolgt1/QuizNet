@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using QuizNet.BusinessLogic.DTOs;
 using QuizNet.BusinessLogic.Interfaces;
 using QuizNet.DataAccess;
@@ -35,6 +36,7 @@ namespace QuizNet.BusinessLogic
         public QuestionDto Add(QuestionDto questionDto)
         {
             var question = _mapper.Map<Question>(questionDto);
+            question.Time = DateTime.Now;
             _questionRepository.Add(question);
 
             var createdQuestion = _mapper.Map<QuestionDto>(question);

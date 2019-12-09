@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using QuizNet.BusinessLogic.DTOs;
 using QuizNet.BusinessLogic.Interfaces;
 using QuizNet.Models;
@@ -57,19 +59,31 @@ namespace QuizNet.Controllers
         public IActionResult Save(QuestionFormViewModel updatedQuestion)
         {
             if (!ModelState.IsValid)
+            {
                 return View("QuestionForm", updatedQuestion);
-
+            }
             var question = updatedQuestion.Question;
             if (question.Id != 0)
+            {
                 _questionService.Update(question);
+            }
             else
-                _questionService.Add(question);
+            {
+                question = _questionService.Add(question);
+            }
 
             return RedirectToAction("Get", new { Id = question.Id });
         }
         public IActionResult GenerateQuiz()
         {
             List<QuestionDto> quiz = _quizService.GenerateQuiz();
+            var quizViewModel = new QuizViewModel(quiz);
+            return View("Quiz", quizViewModel);
+        }
+
+        public IActionResult GenerateRecentlyAddedQuestionsQuiz()
+        {
+            List<QuestionDto> quiz = _quizService.GenerateRecentlyAddedQuestionsQuiz();
             var quizViewModel = new QuizViewModel(quiz);
             return View("Quiz", quizViewModel);
         }
