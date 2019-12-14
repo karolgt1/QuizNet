@@ -13,6 +13,7 @@ using QuizNet.BusinessLogic.Interfaces;
 using QuizNet.DataAccess;
 using QuizNet.BusinessLogic.Mapper;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace QuizNet
 {
@@ -29,6 +30,10 @@ namespace QuizNet
         public void ConfigureServices(IServiceCollection services) //do konfiguracji serwisów
         {
             services.AddAutoMapper(typeof(MappingProfile));
+
+            services.AddDbContext<EFDbContext>(options =>
+                         options.UseSqlServer("server=(localdb)\\mssqllocaldb; database=QuizNet; Trusted_Connection=True; MultipleActiveResultSets=true"));
+
             services.AddScoped<IQuestionsRepository, InMemoryQuestionRepository>();
             services.AddScoped<IQuizService, QuizService>();
             services.AddScoped<IQuestionService, QuestionService>();
