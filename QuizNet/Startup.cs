@@ -34,7 +34,7 @@ namespace QuizNet
             services.AddDbContext<EFDbContext>(options =>
                          options.UseSqlServer("server=(localdb)\\mssqllocaldb; database=QuizNet; Trusted_Connection=True; MultipleActiveResultSets=true"));
 
-            services.AddScoped<IQuestionsRepository, InMemoryQuestionRepository>();
+            services.AddScoped<IQuestionsRepository, EFQuestionRepository>();
             services.AddScoped<IQuizService, QuizService>();
             services.AddScoped<IQuestionService, QuestionService>();
             services.AddControllersWithViews();
