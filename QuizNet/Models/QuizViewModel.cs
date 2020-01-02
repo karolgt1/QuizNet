@@ -16,9 +16,9 @@ namespace QuizNet.Models
         public QuizViewModel(List<QuestionDto> questions)
         {
             Questions = questions;
-            UserAnswerIndex = new int[Questions.Count];
+            UserAnswerIds = new int[Questions.Count];
         }
         public List<QuestionDto> Questions { get; set; }
-        public int[] UserAnswerIndex { get; set; }
+        public int[] UserAnswerIds { get; set; }
     }
 }

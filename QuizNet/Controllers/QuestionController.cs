@@ -47,10 +47,7 @@ namespace QuizNet.Controllers
         public IActionResult Edit(int id)
         {
             var questionToEdit = _questionService.GetById(id);
-            var questionViewModel = new QuestionFormViewModel()
-            {
-                Question = questionToEdit
-            };
+            var questionViewModel = new QuestionFormViewModel(questionToEdit);
 
             return View("QuestionForm", questionViewModel);
         }
@@ -63,6 +60,7 @@ namespace QuizNet.Controllers
                 return View("QuestionForm", updatedQuestion);
             }
             var question = updatedQuestion.Question;
+            question.Answers[updatedQuestion.CorrectAnswerIndex].IsCorrect = true;
             if (question.Id != 0)
             {
                 _questionService.Update(question);
@@ -91,11 +89,11 @@ namespace QuizNet.Controllers
         public IActionResult CheckQuiz(QuizViewModel quizViewModel)
         {
             
-            var correctAnswers = _quizService.CheckQuiz(quizViewModel.Questions, quizViewModel.UserAnswerIndex);
+            var correctAnswers = _quizService.CheckQuiz(quizViewModel.Questions, quizViewModel.UserAnswerIds);
             var summaryViewModel = new QuizSummaryViewModel()
             {
                 Questions = quizViewModel.Questions,
-                UserAnswersIndex = quizViewModel.UserAnswerIndex,
+                UserAnswersIds = quizViewModel.UserAnswerIds,
                 CorrectAnswers = correctAnswers
             };
             return View("QuizSummary", summaryViewModel);
